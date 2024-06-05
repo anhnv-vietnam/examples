@@ -21,6 +21,7 @@ spec:
       containers:
       - name: guestbook
         image: acetateaerie0b/guestbook:v3
+        imagePullPolicy: Always
         ports:
         - name: http-server
           containerPort: 3000

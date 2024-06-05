@@ -28,8 +28,8 @@ import (
 )
 
 var (
-	masterPool *simpleredis.ConnectionPool
-	replicaPool  *simpleredis.ConnectionPool
+	masterPool  *simpleredis.ConnectionPool
+	replicaPool *simpleredis.ConnectionPool
 )
 
 func ListRangeHandler(rw http.ResponseWriter, req *http.Request) {
@@ -51,6 +51,10 @@ func ListPushHandler(rw http.ResponseWriter, req *http.Request) {
 func InfoHandler(rw http.ResponseWriter, req *http.Request) {
 	info := HandleError(masterPool.Get(0).Do("INFO")).([]byte)
 	rw.Write(info)
+}
+
+func HelloWorldHandler(rw http.ResponseWriter, req *http.Request) {
+	rw.Write([]byte("Hello, world!"))
 }
 
 func EnvHandler(rw http.ResponseWriter, req *http.Request) {
@@ -84,6 +88,7 @@ func main() {
 	r.Path("/rpush/{key}/{value}").Methods("GET").HandlerFunc(ListPushHandler)
 	r.Path("/info").Methods("GET").HandlerFunc(InfoHandler)
 	r.Path("/env").Methods("GET").HandlerFunc(EnvHandler)
+	r.Path("/helloworld").Methods("GET").HandlerFunc(HelloWorldHandler)
 
 	n := negroni.Classic()
 	n.UseHandler(r)
