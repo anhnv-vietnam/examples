@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: guestbook
-        image: acetateaerie0b/guestbook/guestbook:v3
+        image: acetateaerie0b/guestbook:v3
         ports:
         - name: http-server
           containerPort: 3000
