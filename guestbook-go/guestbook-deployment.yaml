@@ -1,17 +1,22 @@
-kind: ReplicationController
-apiVersion: v1
+# Write manifest file for guestbook deployment
+kind: Deployment
+apiVersion: apps/v1
 metadata:
   name: guestbook
   labels:
     app: guestbook
+    tier: frontend
 spec:
   replicas: 1
   selector:
-    app: guestbook
+    matchLabels:
+      app: guestbook
+      tier: frontend
   template:
     metadata:
       labels:
         app: guestbook
+        tier: frontend
     spec:
       containers:
       - name: guestbook

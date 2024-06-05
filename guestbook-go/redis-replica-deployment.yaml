@@ -1,5 +1,6 @@
-kind: ReplicationController
-apiVersion: v1
+# write manifest file for redis-replica-deployment
+kind: Deployment
+apiVersion: apps/v1
 metadata:
   name: redis-replica
   labels:
@@ -8,8 +9,9 @@ metadata:
 spec:
   replicas: 2
   selector:
-    app: redis
-    role: replica
+    matchLabels:
+      app: redis
+      role: replica
   template:
     metadata:
       labels:
