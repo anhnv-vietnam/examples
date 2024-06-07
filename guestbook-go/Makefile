@@ -16,7 +16,7 @@
 
 # Usage:
 #   [VERSION=v3] [REGISTRY="staging-k8s.gcr.io"] make build
-VERSION?=v4
+VERSION?=staging
 REGISTRY?=acetateaerie0b
 
 release: clean build push clean
