@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: guestbook
-        image: acetateaerie0b/guestbook:v4
+        image: acetateaerie0b/guestbook:latest
         imagePullPolicy: Always
         ports:
         - name: http-server
