@@ -53,9 +53,9 @@ func InfoHandler(rw http.ResponseWriter, req *http.Request) {
 	rw.Write(info)
 }
 
-// func HelloWorldHandler(rw http.ResponseWriter, req *http.Request) {
-// 	rw.Write([]byte("Hello, world!"))
-// }
+func HelloWorldHandler(rw http.ResponseWriter, req *http.Request) {
+	rw.Write([]byte("Hello, world!"))
+}
 
 func EnvHandler(rw http.ResponseWriter, req *http.Request) {
 	environment := make(map[string]string)
@@ -88,7 +88,7 @@ func main() {
 	r.Path("/rpush/{key}/{value}").Methods("GET").HandlerFunc(ListPushHandler)
 	r.Path("/info").Methods("GET").HandlerFunc(InfoHandler)
 	r.Path("/env").Methods("GET").HandlerFunc(EnvHandler)
-	// r.Path("/helloworld").Methods("GET").HandlerFunc(HelloWorldHandler)
+	r.Path("/helloworld").Methods("GET").HandlerFunc(HelloWorldHandler)
 
 	n := negroni.Classic()
 	n.UseHandler(r)
