@@ -8,7 +8,7 @@ spec:
   ports:
   - port: 3000
     targetPort: http-server
-    nodePort: 30306
+    nodePort: 30305
   selector:
     app: guestbook
   type: NodePort
