@@ -7,14 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Pull the Git repository
-                git branch: 'production', url: 'https://github.com/anhnv-vietnam/examples.git'
-            }
-        }
-
-        stage('Build') {
+        stage('Build image') {
             steps {
                 // Execute the build command to build the container image
                 script {
@@ -26,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Push to Docker Hub') {
+        stage('Push image to Docker Hub') {
             steps {
                 // Login to Docker Hub and push the container image
                 script {
@@ -36,7 +29,7 @@ pipeline {
                         cd guestbook-go
                         make push
                         '''
-                        sh 'docker logout'
+                        // sh 'docker logout'
                     }
                 }
             }
