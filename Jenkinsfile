@@ -30,7 +30,7 @@ pipeline {
                         cd guestbook-go
                         make push
                         '''
-                        sh 'docker logout'
+                        // sh 'docker logout'
                     }
                 }
             }
